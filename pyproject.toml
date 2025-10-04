@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "gpt-builder-scraper"
+version = "0.1.0"
+authors = ["GPT Builder <dev@example.com>"]
+description = "Scrapy-based compliant scraping framework"
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scrapy = "^2.11.0"
+httpx = "^0.27.0"
+pydantic = "^1.10.14"
+parsel = "^1.9.0"
+sqlalchemy = "^2.0.25"
+pandas = "^2.2.0"
+pyarrow = "^14.0.2"
+vcrpy = "^4.3.1"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+pytest-cov = "^4.1.0"
+black = "^23.12.1"
+ruff = "^0.1.9"
+
+[build-system]
+requires = ["poetry-core>=1.5.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]
+
+[tool.black]
+line-length = 100

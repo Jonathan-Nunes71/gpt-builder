@@ -1,0 +1,56 @@
+[projet]
+nom = "<<NomDuProjet>>"
+description = "<<Une phrase claire sur ce que l’on extrait>>"
+surface_web_dynamique = false
+volumetrie_cibles_par_jour = 5000
+delai_max_cycle = "PT2H"
+donnees_sensibles = false
+zone_juridique = ["UE"]
+contact_dpo = "dpo@exemple.com"
+
+[[cibles]]
+label = "<<Source 1>>"
+domain = "<<exemple.com>>"
+
+[[cibles.pages]]
+type = "liste"
+pattern = "https://<<exemple.com>>/catalogue?page={1..N}"
+
+[[cibles.pages]]
+type = "detail"
+pattern = "https://<<exemple.com>>/produit/*"
+
+[[cibles.champs]]
+nom = "titre"
+type = "string"
+obligatoire = true
+
+[[cibles.champs]]
+nom = "prix"
+type = "decimal"
+obligatoire = true
+
+[[cibles.champs]]
+nom = "disponibilite"
+type = "string"
+obligatoire = false
+
+[sortie]
+stockage = ["sqlite", "parquet"]
+format_export = ["jsonl", "csv"]
+bucket = "<<s3://mon-bucket/chemin>>"
+
+[contraintes]
+respect_robots_txt = true
+respect_tos = true
+taux_req_max_par_domaine = 0.5
+concurrence_max = 8
+timeouts_secondes = 20
+retries_max = 5
+backoff = "exponentiel_jitter"
+pas_de_captcha_bypass = true
+pas_de_paywall_bypass = true
+
+[observabilite]
+logs_structures = true
+metriques = ["pages_scrapees", "taux_erreur_http", "latence_moy"]
