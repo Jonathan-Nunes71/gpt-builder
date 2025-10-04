@@ -1,0 +1,17 @@
+interactions:
+- request:
+    method: GET
+    uri: https://example.com/
+    body: null
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      string: "<html><body>Example Domain</body></html>"
+    url: https://example.com/
+version: 1

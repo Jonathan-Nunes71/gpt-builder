@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.poetry/
+.pytest_cache/
+htmlcov/
+*.sqlite
+*.db
+*.parquet
+*.csv
+*.jsonl
+/data/
